@@ -19,7 +19,7 @@ The dataset is based on the **Framingham Heart Study** and contains health-relat
 
 ---
 
-## ⚙ Steps in the Project
+##  Steps in the Project
 
 1. **Data Loading & Exploration**
    - Display dataset shape, missing values, and target distribution
@@ -114,5 +114,5 @@ See `requirements.txt` for the exact package list:
 
 ---
 
-## 📜 License
+##  License
 This project is licensed under the MIT License.
