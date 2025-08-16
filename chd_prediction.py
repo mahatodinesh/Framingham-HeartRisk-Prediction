@@ -18,21 +18,20 @@ from imblearn.over_sampling import SMOTE
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 
-# --------------------------
+
 # Paths
-# --------------------------
+
 DATA_PATH = os.path.join('data', 'framingham.csv')
 OUT_DIR = 'outputs'
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# --------------------------
+
 # Load Dataset
-# --------------------------
+
 df = pd.read_csv(DATA_PATH)
 
-# --------------------------
 # Exploratory Data Analysis
-# --------------------------
+
 print('Dataset Shape:', df.shape)
 print('\nMissing Values:\n', df.isnull().sum())
 print('\nTarget Distribution:\n', df['TenYearCHD'].value_counts(normalize=True))
@@ -68,9 +67,9 @@ for col in ['age', 'BMI', 'sysBP', 'glucose']:
         plt.savefig(os.path.join(OUT_DIR, f'box_{col}.png'), dpi=150)
         plt.close()
 
-# --------------------------
+
 # Data Wrangling
-# --------------------------
+
 df = df.dropna(subset=['TenYearCHD'])
 imputer = SimpleImputer(strategy='mean')
 df_imputed = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
@@ -86,9 +85,9 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# --------------------------
+
 # SMOTE: Oversample Minority Class
-# --------------------------
+
 smote = SMOTE(random_state=42)
 X_train_balanced, y_train_balanced = smote.fit_resample(X_train_scaled, y_train)
 
